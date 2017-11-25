@@ -33,10 +33,10 @@ $factory->define(\App\Models\Thread::class, function (Faker $faker) {
 });
 
 $factory->define(\App\Models\Reply::class, function (Faker $faker) {
- 
+
     return [
         'body' => $faker->sentence,
-        'thread_id' =>  function(){ return factory('\App\Models\Thread')->create()->id;},
+        'thread_id' =>  function(){ return factory('App\Models\Thread')->create()->id;},
         'user_id' => function(){ return factory('App\User')->create()->id;},
      ];
 });
