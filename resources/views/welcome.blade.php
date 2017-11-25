@@ -62,6 +62,11 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .title h1{
+
+                font-weight: normal;
+            }
+
         </style>
     </head>
     <body>
@@ -79,7 +84,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                        <h1>
+                         RafteL
+                        </h1>
                 </div>
 
                 <div class="links">
