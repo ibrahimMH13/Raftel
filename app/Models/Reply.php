@@ -9,7 +9,7 @@ class Reply extends Model
 {
     //
 
-
+ protected $guarded=[];
     //relationShip
 
 

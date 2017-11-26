@@ -37,8 +37,9 @@ class ReplyController extends Controller
     public function store(Thread $thread)
     {
         //
+
         $newReply=[
-            "body" => request('body'),
+            "body" => \request('body'),
             "user_id" =>auth()->user()->id
 
         ];
