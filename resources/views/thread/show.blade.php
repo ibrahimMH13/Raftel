@@ -25,11 +25,11 @@
             @forelse($thread->reply as $reply)
                 @include('thread.reply')
             @empty
-                <h1>Not Result to Show</h1>
+              <p class="text-center text-capitalize">Not Reply Yet,be the first !!</p>
             @endforelse
          </div>
         @if(auth()->check())
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-6 col-md-offset-2">
               {!! Form::open(["url"=>$thread->path()."/replies","method"=>"post"]) !!}
                     <textarea id="body" name="body" class="form-control" rows="5"></textarea>
                     <input type="submit" value="Reply" class="btn btn-default">
