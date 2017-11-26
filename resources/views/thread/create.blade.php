@@ -8,16 +8,16 @@
                     <div class="panel-heading">New Post</div>
 
                     <div class="panel-body">
-                        {!! Form::open(["url"=>"","method"=>"post"]) !!}
+                        {!! Form::open(["url"=>"/threads/create","method"=>"post"]) !!}
                         <div class="form-group">
                             <div>
                                 <label for="title">Title Post :</label>
-                                <input type="text" id="title" class="form-control"/>
+                                <input type="text" id="title" name="title" class="form-control"/>
                             </div>
                         </div><br>
                         <div class="form-group">
                             <div>
-                                <textarea class="form-control" rows="10">
+                                <textarea class="form-control" id="body" name="body" rows="10">
 
                                 </textarea>
                              </div>
