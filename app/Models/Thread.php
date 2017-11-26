@@ -15,7 +15,7 @@ class Thread extends Model
     }
 
     public function addReply($reply){
-        
+
         $this->reply()->create($reply);
     }
     //RelationShip

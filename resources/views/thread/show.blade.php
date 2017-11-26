@@ -30,9 +30,10 @@
          </div>
         @if(auth()->check())
             <div class="col-md-8 col-md-offset-2">
-                <form action="" method="post">
+              {!! Form::open(["url"=>$thread->path()."/replies","method"=>"post"]) !!}
                     <textarea class="form-control" rows="5"></textarea>
-                </form>
+                    <input type="submit" value="Reply" class="button btn btn-xs btn-primary">
+                {!! Form::close() !!}
             </div>
                 @else
             <p class="alert alert-danger text-center">
