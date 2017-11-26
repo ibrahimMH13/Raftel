@@ -32,7 +32,7 @@
             <div class="col-md-8 col-md-offset-2">
               {!! Form::open(["url"=>$thread->path()."/replies","method"=>"post"]) !!}
                     <textarea class="form-control" rows="5"></textarea>
-                    <input type="submit" value="Reply" class="button btn btn-xs btn-primary">
+                    <input type="submit" value="Reply" class="btn btn-default">
                 {!! Form::close() !!}
             </div>
                 @else
