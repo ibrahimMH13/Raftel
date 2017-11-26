@@ -9,7 +9,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <p>
-                            <h6> Pulished By {{ $thread->user->name }}</h6>
+                            <h6><a href="{{$thread->path()}}">Pulished By {{ $thread->user->name }}</a></h6>
                             <span> {{ $thread->created_at}}</span>
                             </p>
 
