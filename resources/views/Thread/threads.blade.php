@@ -10,7 +10,7 @@
                         <div class="panel-heading">
                             <p>
                             <h6><a href="{{$thread->path()}}">Pulished By {{ $thread->user->name }}</a></h6>
-                            <span> {{ $thread->created_at}}</span>
+                            <span> {{ $thread->created_at->diffForHumans()}}</span>
                             </p>
 
                             {{$thread->title}}
