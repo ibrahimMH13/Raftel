@@ -7,8 +7,14 @@
             @forelse($threads as $thread)
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
-                        <h4> </h4>
-                        <div class="panel-heading">{{$thread->title}}</div>
+                        <div class="panel-heading">
+                            <p>
+                            <h6> Pulished By {{ $thread->user->name }}</h6>
+                            <span> {{ $thread->created_at}}</span>
+                            </p>
+
+                            {{$thread->title}}
+                        </div>
 
                         <div class="panel-body">
                             {{$thread->body}}
