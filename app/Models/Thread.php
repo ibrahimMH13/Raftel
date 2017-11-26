@@ -13,6 +13,11 @@ class Thread extends Model
 
         return '/threads/'.$this->id;
     }
+
+    public function addReply($reply){
+        
+        $this->reply()->create($reply);
+    }
     //RelationShip
 
     public function user(){
@@ -24,4 +29,6 @@ class Thread extends Model
 
         return $this->hasMany(Reply::class);
     }
+
+
 }

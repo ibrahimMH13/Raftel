@@ -23,25 +23,24 @@
         </div>
         <div class="row">
             @forelse($thread->reply as $reply)
-                <div class="col-md-6 col-md-offset-2">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <p>
-                            <h6><a href="">{{ $reply->user->name }} reply </a></h6>
-                            <span> {{ $reply->created_at->diffForHumans()}}</span>
-                            </p>
-                         </div>
-
-                        <div class="panel-body">
-                         {{$reply->body}}
-                        </div>
-                    </div>
-                </div>
+                @include('thread.reply')
             @empty
                 <h1>Not Result to Show</h1>
             @endforelse
-
-
-        </div>
+         </div>
+        @if(auth()->check())
+            <div class="col-md-8 col-md-offset-2">
+                <form action="" method="post">
+                    <textarea class="form-control" rows="5"></textarea>
+                </form>
+            </div>
+                @else
+            <p class="alert alert-danger text-center">
+                Please Register to Reply ...
+            </p>
+        @endif
     </div>
-@endsection
+    <br>
+    <br>
+    <br>
+ @endsection
