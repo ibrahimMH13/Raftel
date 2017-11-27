@@ -14,6 +14,21 @@
                                 <label for="title">Title Post :</label>
                                 <input type="text" id="title" name="title" class="form-control"/>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <label for="title">Category :</label>
+                                @if( \App\Models\Channel::all()->isNotEmpty())
+                               <select name="channel" class="form-control">
+                                   @foreach(\App\Models\Channel::all() as $ch)
+                                   <option  value="{{$ch->id}}">{{$ch->name }}</option>
+                                    @endforeach
+                               </select>
+                                @else
+                                    <div class="alert alert-danger">Must be category so You cannot add </div>
+                                @endif
+
+                            </div>
                         </div><br>
                         <div class="form-group">
                             <div>

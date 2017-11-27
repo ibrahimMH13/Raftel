@@ -20,9 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Threads
+Route::get('/threads/create','ThreadController@create');
 Route::get('/threads','ThreadController@index');
 Route::get('/threads/{channel}','ThreadController@index');
-Route::get('/threads/create','ThreadController@create');
 Route::post('/threads/create','ThreadController@store');
 Route::get('/threads/{channel}/{thread}','ThreadController@show');
 
