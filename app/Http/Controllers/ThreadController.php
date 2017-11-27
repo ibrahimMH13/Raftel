@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Channel;
+ use App\Filters\ThreadFilter;
+ use App\Models\Channel;
 use App\Models\Thread;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class ThreadController extends Controller
         $this->middleware('auth')->except('index','show');
     }
 
-    public function index(Channel $channel)
+    public function index(Channel $channel,ThreadFilter $filter)
     {
         //
         $threads = $this->getThreads($channel)->get();
