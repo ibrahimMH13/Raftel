@@ -4,6 +4,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7 col-md-offset-2">
+                <div class="col-md-push-3">
+                    <ul class="alert-danger alert-dismissable">
+
+                        @foreach($errors->all() as $e)
+                            <li>{{ $e }}</li>
+                        @endforeach
+                    </ul>
+                </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">New Post</div>
 

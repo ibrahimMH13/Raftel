@@ -52,7 +52,10 @@ class ThreadController extends Controller
     public function store(Channel $channel,Request $request)
     {
         //
-
+        $this->validate($request,[
+            "title" =>"required",
+            "body" =>"required"
+        ]);
       $thread =Thread::create(
           [
            "title" =>$request->title,
