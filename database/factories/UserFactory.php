@@ -29,6 +29,7 @@ $factory->define(\App\Models\Thread::class, function (Faker $faker) {
         'title' => $faker->sentence,
         'body' => $faker->paragraph(),
         'user_id' => function(){ return factory('App\User')->create()->id;},
+        "channel" =>function(){return factory('App\Models\Channel')->create()->id; }
      ];
 });
 
