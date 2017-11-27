@@ -9,7 +9,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <p>
-                            <h6><a href="{{$thread->path()}}">Pulished By {{ $thread->user->name }}</a></h6>
+                            <h6><a href="">Pulished By {{ $thread->user->name }}</a></h6>
                             <span> {{ $thread->created_at->diffForHumans()}}</span>
                             </p>
 
@@ -22,7 +22,9 @@
                     </div>
                 </div>
                 @empty
-                    <h1>Not Result to Show</h1>
+
+                      <h2 style="padding-top: 15%" class="text-center text-info">Not Result to Show</h2>
+
              @endforelse
         </div>
     </div>

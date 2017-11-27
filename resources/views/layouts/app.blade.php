@@ -55,19 +55,23 @@
                         <!-- Authentication Links -->
                         <li><a href="/threads/create">New</a></li>
                         <li><a href="/threads">Threads</a></li>
+                        @if(\App\Models\Channel::all()->isNotEmpty())
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                Channels <span class="caret"></span>
                             </a>
 
-                            <ul class="dropdown-menu">
-                                @foreach(\App\Models\Channel::all() as $ch)
-                                    <li>
-                                        <a href="/{{ $ch->slug }}">{{$ch->name}}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
+                                <ul class="dropdown-menu">
+                                    @foreach(\App\Models\Channel::all() as $ch)
+                                        <li>
+                                            <a href="/threads/{{ $ch->slug }}">{{$ch->name}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+
                         </li>
+                        @endif
+
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
