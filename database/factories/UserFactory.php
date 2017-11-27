@@ -40,3 +40,10 @@ $factory->define(\App\Models\Reply::class, function (Faker $faker) {
         'user_id' => function(){ return factory('App\User')->create()->id;},
      ];
 });
+$factory->define(\App\Models\Channel::class, function (Faker $faker) {
+    $slug = $faker->word;
+    return [
+        'name' => $slug,
+        'slug' => $slug,
+      ];
+});
