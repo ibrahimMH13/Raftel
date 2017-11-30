@@ -15,11 +15,13 @@
     <style>
         .level{
 
+            display: flex;
+            align-items: center;
         }
 
-        .flex{
+        .flax{
 
-
+        flex: 1;
         }
 
     </style>

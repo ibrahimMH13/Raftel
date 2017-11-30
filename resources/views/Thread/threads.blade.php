@@ -8,13 +8,14 @@
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <p>
-                            <h6><a href="{{$thread->path()}}">Pulished By {{ $thread->user->name }}</a></h6>
+                            <div class="level">
+                                <span class="flax">
+                                 <a href="{{$thread->path()}}">Pulished By {{ $thread->user->name }}</a>
+                                </span>
                             <span> {{ $thread->created_at->diffForHumans()}}</span>
-                            </p>
-
-                            {{$thread->title}}
-                        </div>
+                            </div>
+                            <h4> {{$thread->title}} </h4>
+                            </div>
 
                         <div class="panel-body">
                             {{$thread->body}}
