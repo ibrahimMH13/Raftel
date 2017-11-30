@@ -15,6 +15,10 @@ class Thread extends Model
         return "/threads/{$this->channel->name}/".$this->id;
      }
 
+     public function scopeFilter($q,$filter){
+
+        return ;
+     }
     public function addReply($reply){
 
         $this->reply()->create($reply);
