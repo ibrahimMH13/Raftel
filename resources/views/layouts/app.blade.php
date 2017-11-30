@@ -54,7 +54,22 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         <li><a href="/threads/create">New</a></li>
-                        <li><a href="/threads">Threads</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                Threads <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+
+                                <li>
+                                        <a href="/threads">Threads</a>
+                                </li>
+                                <li>
+                                    <a href="/threads?by={{Auth::user()->name}}">My Threads</a>
+                                </li>
+
+                            </ul>
+
+                        </li>
                         @if(\App\Models\Channel::all()->isNotEmpty())
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">

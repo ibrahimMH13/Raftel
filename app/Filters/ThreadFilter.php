@@ -24,11 +24,12 @@ class ThreadFilter
 
     public function apply($builder){
 
-        if( $username = $this->request->by) {
+        if(! $username = $this->request->by)
+            return $builder;
 
             $user = User::where('name',$username)->firstOrfail();
             return $builder->where('user_id', $user->id);
-        }
+
 
     }
    /* protected function by($username){
