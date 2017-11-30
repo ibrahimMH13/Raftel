@@ -32,12 +32,14 @@
                     </div>
                 </div>
 
-                @forelse($thread->reply as $reply)
+                @forelse($replies as $reply)
 
                     @include('thread.reply')
+
                 @empty
                     <p class="text-center text-capitalize">Not Reply Yet,be the first !!</p>
                 @endforelse
+                {{$replies->links()}}
             </div>
             @if(auth()->check())
                 <div class="col-md-6 col-md-offset-4">
