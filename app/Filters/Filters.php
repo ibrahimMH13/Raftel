@@ -9,10 +9,9 @@
 namespace App\Filters;
 use Illuminate\Http\Request;
 
-abstract  class Filters
+abstract class Filters
 {
     protected $request,$builder;
-    protected $filters=[];
 
     public function __construct(Request $request)
     {
@@ -22,12 +21,12 @@ abstract  class Filters
     public function apply($builder){
 
         $this->builder = $builder;
-        foreach ($this->getFilters() as $filter => $vaule){
-            if (method_exists($this,$filter)){
-                $this->$filter($vaule);
-            }
-        }
-        return $this->builder;
+
+        if($this->request->has('by'))
+            return $this->by($this->request->by);
+        else
+            return $builder;
+
     }
 
     public function getFilters(){
