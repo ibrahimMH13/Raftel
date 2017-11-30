@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 class ThreadFilter extends Filters
 {
 
-  //  protected $filters = ["by"];
+ protected $filterNameFunctions = ["by","fuck"];
 
      protected function by($username){
 

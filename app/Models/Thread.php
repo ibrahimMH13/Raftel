@@ -16,8 +16,7 @@ class Thread extends Model
      }
 
      public function scopeFilter($query,$filter){
-
-        return $filter->apply($query);
+         return $filter->apply($query);
      }
     public function addReply($reply){
 
