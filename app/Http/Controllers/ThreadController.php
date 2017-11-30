@@ -24,7 +24,7 @@ class ThreadController extends Controller
     public function index(Channel $channel,ThreadFilter $filter)
     {
         //
-        $threads = $this->getThreads($channel);
+          $threads = $this->getThreads($channel,$filter);
         return view('thread.threads',compact('threads'));
     }
 
@@ -113,19 +113,15 @@ class ThreadController extends Controller
      * @param Channel $channel
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    protected function getThreads(Channel $channel)
+    protected function getThreads($channel,$filters)
     {
         if ($channel->exists)
             $threads = $channel->thread();
          else
             $threads = Thread::latest();
 
+          $threads = $threads->filter($filters);
 
-        if ($username = request('by')) {
-
-            $user = User::where('name', $username)->firstOrFail();
-            $threads->where('user_id',$user->id);
-        }
         return $threads->get();
     }
 }
