@@ -14,7 +14,11 @@
                                 </span>
                             <span> {{ $thread->created_at->diffForHumans()}}</span>
                             </div>
-                            <h4> {{$thread->title}} </h4>
+                            <div class="level">
+                                <h4 class="flax"> {{$thread->title}}</h4>
+                              <sub>  {{$thread->reply_count .' '.str_plural('reply',$thread->reply_count)}}</sub>
+                            </div>
+
                             </div>
 
                         <div class="panel-body">

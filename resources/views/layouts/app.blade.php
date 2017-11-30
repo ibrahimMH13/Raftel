@@ -64,6 +64,8 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="/threads">Threads</a>
+                                </li><li>
+                                    <a href="/threads?popular">Popular Threads</a>
                                 </li>
                                 <li>
                                     <a href="/threads?by={{Auth::user()->name}}">My Threads</a>
