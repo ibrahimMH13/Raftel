@@ -40,7 +40,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laftel') }}
+                        {{ config('APP_NAME', 'Raftel') }}
                     </a>
                 </div>
 

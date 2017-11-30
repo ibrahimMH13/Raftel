@@ -15,8 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //uncode DB
         Schema::defaultStringLength(191);
+
+        //cache the channels in all views
         \View::composer('*',function ($view){
 
             $channels = \Cache::rememberForever('channels',function (){
@@ -24,6 +26,9 @@ class AppServiceProvider extends ServiceProvider
             });
             $view->with('channels',$channels);
         });
+
+
+
     }
 
     /**

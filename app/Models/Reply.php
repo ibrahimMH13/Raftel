@@ -13,6 +13,7 @@ class Reply extends Model
     //relationShip
 
 
+
     public function thread(){
 
         return $this->belongsTo(Reply::class);
