@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -44,9 +45,10 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile)
+    public function show(User $user)
     {
         //
+        return view();
     }
 
     /**
