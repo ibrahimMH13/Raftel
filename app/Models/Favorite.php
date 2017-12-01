@@ -11,8 +11,7 @@ class Favorite extends Model
     protected $guarded=[];
     //relationship
 
-    public function favoritable(){
-
-        return $this->morphTo();
+    public function favorite(){
+         return $this->morphTo();
     }
 }
