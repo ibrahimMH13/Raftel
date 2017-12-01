@@ -21,6 +21,7 @@ class ThreadController extends Controller
         $this->middleware('auth')->except('index','show');
     }
 
+
     public function index(Channel $channel,ThreadFilter $filter)
     {
         //
@@ -107,9 +108,12 @@ class ThreadController extends Controller
      * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy(Channel $channel,Thread $thread)
     {
         //
+        $this->authorize('update',$thread);
+      $thread->delete();
+      return redirect('/threads');
     }
 
     /**

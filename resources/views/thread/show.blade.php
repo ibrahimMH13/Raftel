@@ -30,6 +30,15 @@
                     <div class="panel-body">
                         {{$thread->body}}
                     </div>
+                    @can('update',$thread)
+                        <div class="panel-footer">
+                            {!! Form::open(["url"=>$thread->path(),"method"=>"delete"]) !!}
+                            <button class="btn btn-link">
+                                <i class="glyphicon glyphicon-remove" style="color:#dd1144;"></i>
+                            </button>
+                             {!! Form::close() !!}
+                        </div>
+                     @endcan
                 </div>
 
                 @forelse($replies as $reply)

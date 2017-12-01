@@ -12,6 +12,7 @@
                 <p class="flax">  {{$reply->body}} </p>
                {!! Form::open(["url"=>"/replies/{$reply->id}/favorite"]) !!}
                 <button class="btn btn-default">
+                    {{$reply->favorite->count()}}
                     <i class="glyphicon glyphicon-heart" style="color:#d62728"></i>
                 </button>
                 {!! Form::close() !!}

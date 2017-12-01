@@ -17,6 +17,9 @@ class Thread extends Model
 
             $builder->withCount('reply');
         });
+        static::deleting(function ($thread){
+            $thread->reply()->delete();
+        });
 
     }
 
@@ -25,6 +28,7 @@ class Thread extends Model
 
         return "/threads/{$this->channel->name}/".$this->id;
      }
+
 
      public function scopeFilter($query,$filter){
          return $filter->apply($query);
