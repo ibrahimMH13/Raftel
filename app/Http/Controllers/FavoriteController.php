@@ -38,6 +38,7 @@ class FavoriteController extends Controller
     public function store(Reply $reply)
     {
         //
+        dd('Error');
         $reply->addFavorite();
         return back();
     }

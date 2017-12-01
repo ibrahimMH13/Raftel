@@ -10,7 +10,7 @@
         <div class="panel-body">
             <div class="level">
                 <p class="flax">  {{$reply->body}} </p>
-               {!! Form::open() !!}
+               {!! Form::open(["url"=>"/replies/{$reply->id}/favorite"]) !!}
                 <button class="btn btn-default">
                     <i class="glyphicon glyphicon-heart" style="color:#d62728"></i>
                 </button>
