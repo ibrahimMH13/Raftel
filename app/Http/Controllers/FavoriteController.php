@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Favorite;
+use App\Models\Reply;
+use foo\bar;
 use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
@@ -33,9 +35,11 @@ class FavoriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Reply $reply)
     {
         //
+        $reply->addFavorite();
+        return back();
     }
 
     /**

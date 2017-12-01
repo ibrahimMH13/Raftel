@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-use App\favorite;
-use App\User;
+ use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
@@ -15,8 +14,16 @@ class Reply extends Model
 
     public function addFavorite(){
 
+       if(!$this->favorite()->where('user_id',auth()->user()->id)){
+           return $this->favorite()->create([
 
-    }
+               "user_id" => auth()->user()->id,
+               "favorite_id" => $this->id,
+               "favorite_type" => get_class($this)
+           ]);
+       }
+
+     }
     //relationShip
     public function thread(){
 
@@ -29,7 +36,12 @@ class Reply extends Model
     }
     public function favorite(){
 
-        return $this->morphto(favorite::class);
+        return $this->morphMany('favorite');
+    }
+
+    public function isFavorite(){
+
+        return $this->favorite()->where('user_id',auth()->user()->id)->exists();
     }
 
 }
