@@ -29,3 +29,5 @@ Route::get('/threads/{channel}/{thread}','ThreadController@show');
 //Reply
 Route::post('/threads/{channel}/{thread}/{replies}','ReplyController@store');
 
+//Favirted
+//Route::get('/replies/{reply}/favirte','');
