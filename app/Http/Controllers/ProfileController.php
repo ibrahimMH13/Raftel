@@ -16,6 +16,7 @@ class ProfileController extends Controller
     public function index()
     {
         //
+
     }
 
     /**
@@ -48,7 +49,11 @@ class ProfileController extends Controller
     public function show(User $user)
     {
         //
-        return view('profile.show',compact('user'));
+        $threads = $user->threads()->paginate(5);
+        return view('profile.show',([
+            "user" => $user,
+            "threads" => $threads
+        ]));
     }
 
     /**
