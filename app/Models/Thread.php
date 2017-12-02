@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-use App\Modles\Activity;
-use App\User;
+ use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
