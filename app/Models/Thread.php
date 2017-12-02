@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Modles\Activity;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +20,16 @@ class Thread extends Model
         });
         static::deleting(function ($thread){
             $thread->reply()->delete();
+        });
+
+        static::created(function ($threads){
+
+            Activity::create([
+                "user_id" =>auth()->user()->id,
+                "type" =>"created".strtolower(new\ReflectionClass($threads)) ,
+                "subject_id" =>$threads->id,
+                "subject_type" =>get_class($threads)
+            ]);
         });
 
     }
