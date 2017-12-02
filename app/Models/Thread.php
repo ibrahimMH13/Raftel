@@ -23,12 +23,8 @@ class Thread extends Model
 
         static::created(function ($threads){
 
-            Activity::create([
-                "user_id" =>auth()->user()->id,
-                "type" =>"created".strtolower(new\ReflectionClass($threads)) ,
-                "subject_id" =>$threads->id,
-                "subject_type" =>get_class($threads)
-            ]);
+            $e ="created";
+               $threads->recordActivities($e);
         });
 
     }
@@ -48,18 +44,15 @@ class Thread extends Model
         $this->reply()->create($reply);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    protected function recordActivities($e)
+        {
+            Activity::create([
+                "user_id" => auth()->user()->id,
+                "type" => $e.strtolower(new\ReflectionClass($this))->getShortName(),
+                "subject_id" => $this->id,
+                "subject_type" => get_class($this)
+            ]);
+        }
     //RelationShip
 
     public function user(){
@@ -76,6 +69,11 @@ class Thread extends Model
 
         return $this->belongsTo(Channel::class);
 
+    }
+
+    public function activity(){
+
+        return $this->morphMany(Activity::class,'subject');
     }
 
 }

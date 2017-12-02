@@ -8,4 +8,9 @@ class Activity extends Model
 {
     //
     protected $guarded= [];
+
+    public function activity(){
+
+        return $this->morphTo();
+    }
 }
