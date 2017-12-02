@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+ use App\RecordActivites;
  use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
-    //
-    protected $guarded=[];
+
+     protected $guarded=[];
+
+     use RecordActivites;
 
     protected static function boot()
     {
@@ -21,15 +24,8 @@ class Thread extends Model
             $thread->reply()->delete();
         });
 
-        static::created(function ($threads){
-
-            $e ="created";
-               $threads->recordActivities($e);
-        });
-
-    }
-
-
+     }
+ 
     public function path(){
 
         return "/threads/{$this->channel->name}/".$this->id;
@@ -44,15 +40,7 @@ class Thread extends Model
         $this->reply()->create($reply);
     }
 
-    protected function recordActivities($e)
-        {
-            Activity::create([
-                "user_id" => auth()->user()->id,
-                "type" => $e.strtolower(new\ReflectionClass($this))->getShortName(),
-                "subject_id" => $this->id,
-                "subject_type" => get_class($this)
-            ]);
-        }
+
     //RelationShip
 
     public function user(){
