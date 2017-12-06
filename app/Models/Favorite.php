@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\RecordActivites;
 use Illuminate\Database\Eloquent\Model;
 
 class Favorite extends Model
@@ -9,6 +10,7 @@ class Favorite extends Model
     //
 
     protected $guarded=[];
+    use RecordActivites;
     //relationship
 
     public function favorite(){
