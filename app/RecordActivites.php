@@ -17,12 +17,18 @@ trait RecordActivites
     protected static function bootRecordActivites(){
 
         static::created(function ($t){
-            $e="created";
-           $t->recordActivities($e);
+
+            foreach (static::getTypeEvent() as $e){
+
+                static::$e(function ($model) use ($e){
+
+                    $model->recordActivities($e);
+                });
+            }
         });
     }
 
-    protected  function recordActivities($e){
+    protected function recordActivities($e){
 
         Activity::create([
             "user_id" => auth()->user()->id,
@@ -32,6 +38,10 @@ trait RecordActivites
         ]);
     }
 
+    protected static function getTypeEvent(){
+
+        return ['created'];
+    }
     protected function getAcitviyType($e){
 
         return $e.'_'.strtolower((new\ReflectionClass($this))->getShortName());

@@ -30,8 +30,6 @@ class Thread extends Model
 
         return "/threads/{$this->channel->name}/".$this->id;
      }
-
-
      public function scopeFilter($query,$filter){
          return $filter->apply($query);
      }
@@ -39,10 +37,7 @@ class Thread extends Model
 
         $this->reply()->create($reply);
     }
-
-
     //RelationShip
-
     public function user(){
 
         return $this->belongsTo(User::class);
