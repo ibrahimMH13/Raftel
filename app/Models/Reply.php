@@ -28,6 +28,11 @@ class Reply extends Model
 
      }
     //relationShip
+
+    public function path(){
+
+        return "/".$this->thread->path()."#reply-".$this->id;
+    }
     public function thread(){
 
         return $this->belongsTo(Reply::class);

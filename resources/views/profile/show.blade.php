@@ -10,21 +10,23 @@
                </div>
             </div>
             <div class="col-md-8 col-md-offset-2">
-                @foreach($threads as $thread)
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a href="{{$thread->path()}}">
-                                <div class="level">
-                                    <h5 class="flax">
-                                        {{ $thread->title }}
-                                    </h5>
-                                    {{$thread->created_at->diffForHumans()}}
-                                </div>
-                            </a>
-                        </div>
-                     </div>
-                @endforeach
-                {{ $threads->links() }}
+
+                @forelse($activities as $date=>$activity)
+                    <h3>{{$date}}</h3>
+                    <div class="clearfix"></div>
+                    @foreach($activity as $record)
+                        @if(view()->exists("profile.activity.{$record->type}"))
+                            @include("profile.activity.{$record->type}",['activity'=>$record])
+                        @else
+                            <p>NO Found THe page {{$record->type}}</p>
+                        @endif
+
+                    @endforeach
+                @empty
+                    <p> No there Activity Yet</p>
+                @endforelse
+
+
             </div>
         </div>
     </div>
