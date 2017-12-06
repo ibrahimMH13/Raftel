@@ -10,8 +10,7 @@ class Thread extends Model
 {
 
      protected $guarded=[];
-
-     use RecordActivites;
+      use RecordActivites;
 
     protected static function boot()
     {
@@ -54,9 +53,6 @@ class Thread extends Model
 
     }
 
-    public function activity(){
 
-        return $this->morphMany(Activity::class,'subject');
-    }
 
 }

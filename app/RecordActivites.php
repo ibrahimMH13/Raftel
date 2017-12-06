@@ -16,36 +16,40 @@ trait RecordActivites
 
     protected static function bootRecordActivites(){
 
+        if(auth()->guest())
+            return false;
         static::created(function ($t){
 
             foreach (static::getTypeEvent() as $e){
-
                 static::$e(function ($model) use ($e){
-
                     $model->recordActivities($e);
                 });
-            }
+             }
+         });
+
+        static::deleting(function ($model){
+            $model->activity()->delete();
         });
+
+
     }
 
     protected function recordActivities($e){
-
         Activity::create([
             "user_id" => auth()->user()->id,
             "type" => $this->getAcitviyType($e),
-            "subject_id" => $this->id,
-            "subject_type" => get_class($this)
-        ]);
+         ]);
     }
 
     protected static function getTypeEvent(){
-
         return ['created'];
     }
     protected function getAcitviyType($e){
-
         return $e.'_'.strtolower((new\ReflectionClass($this))->getShortName());
     }
 
+    public function activity(){
+        return $this->morphMany(Activity::class,'subject');
+    }
 
 }

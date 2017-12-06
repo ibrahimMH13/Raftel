@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+ use App\RecordActivites;
  use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
     //
-
  protected $guarded=[];
+    use RecordActivites;
+
 
 
     public function addFavorite(){
