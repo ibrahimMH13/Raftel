@@ -18,28 +18,27 @@ trait RecordActivites
 
         if(auth()->guest())
             return false;
-        static::created(function ($t){
-
-            foreach (static::getTypeEvent() as $e){
-                static::$e(function ($model) use ($e){
+            foreach (static::getTypeEvent() as $e) {
+                static::$e(function ($model) use ($e) {
                     $model->recordActivities($e);
                 });
              }
-         });
 
         static::deleting(function ($model){
             $model->activity()->delete();
         });
-
-
     }
 
     protected function recordActivities($e){
-        Activity::create([
+
+        $this->activity()->create([
             "user_id" => auth()->user()->id,
             "type" => $this->getAcitviyType($e),
-         ]);
+        ]);
+
+
     }
+
 
     protected static function getTypeEvent(){
         return ['created'];
