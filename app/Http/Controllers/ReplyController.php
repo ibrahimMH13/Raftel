@@ -92,5 +92,6 @@ class ReplyController extends Controller
     public function destroy(Reply $reply)
     {
         //
+        dd('Error');
     }
 }

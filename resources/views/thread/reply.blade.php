@@ -10,7 +10,7 @@
         <div class="panel-body">
             <div class="level">
                 <p class="flax">  {{$reply->body}} </p>
-               {!! Form::open(["url"=>"/replies/{$reply->id}/favorite"]) !!}
+               {!! Form::open(["url"=>"/threads/{channel}/{thread}/{replies}"]) !!}
                 <button class="btn btn-default">
                     {{$reply->favorite->count()}}
                     <i class="glyphicon glyphicon-heart" style="color:#d62728"></i>
@@ -21,7 +21,16 @@
 
         </div>
         <div class="panel-footer">
-
+            @if(auth()->check())
+                {!! Form::open(["url"=>"reply/{$reply->id}","method"=>"delete"]) !!}
+                <button class="btn btn-link">
+                    <i class="glyphicon glyphicon-remove" style="color:#dd1144;"></i>
+                </button>
+                {!! Form::close() !!}            @else
+                <p class="alert alert-danger text-center">
+                    Please Register to Reply ...
+                </p>
+            @endif
         </div>
     </div>
 </div>
