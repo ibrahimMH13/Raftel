@@ -91,7 +91,8 @@ class ReplyController extends Controller
      */
     public function destroy(Reply $reply)
     {
-        //
-        dd('Error');
+
+        $this->authorize('update',$reply);
+        $reply->delete();
     }
 }
