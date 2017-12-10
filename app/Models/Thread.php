@@ -27,8 +27,9 @@ class Thread extends Model
  
     public function path(){
 
-        return "/threads/{$this->channel->name}/".$this->id;
-     }
+        return "/threads/{$this->channel->slug}/".$this->id;
+
+    }
      public function scopeFilter($query,$filter){
          return $filter->apply($query);
      }

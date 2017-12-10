@@ -14,6 +14,11 @@ class ReplyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
@@ -91,8 +96,9 @@ class ReplyController extends Controller
      */
     public function destroy(Reply $reply)
     {
-
         $this->authorize('update',$reply);
-        $reply->delete();
+         $reply->delete();
+        return back();
+
     }
 }

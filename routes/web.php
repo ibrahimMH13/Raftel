@@ -28,8 +28,8 @@ Route::get('/threads/{channel}/{thread}','ThreadController@show');
 Route::delete('/threads/{channel}/{thread}','ThreadController@destroy');
 
 //Reply
+Route::delete('/replies/{reply}','ReplyController@destroy');
 Route::post('/threads/{channel}/{thread}/{replies}','ReplyController@store');
-Route::delete('/reply/{replies}','ReplyController@destroy');
 
 //Favirted
  Route::post('/replies/{reply}/favorite','FavoriteController@store');

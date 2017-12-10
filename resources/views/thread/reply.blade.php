@@ -20,17 +20,15 @@
             </div>
 
         </div>
-        <div class="panel-footer">
-            @if(auth()->check())
-                {!! Form::open(["url"=>"reply/{$reply->id}","method"=>"delete"]) !!}
+
+        @can('update',$reply)
+              <div class="panel-footer">
+              {!! Form::open(["url"=>"/replies/".$reply->id,"method"=>"delete"]) !!}
                 <button class="btn btn-link">
                     <i class="glyphicon glyphicon-remove" style="color:#dd1144;"></i>
                 </button>
-                {!! Form::close() !!}            @else
-                <p class="alert alert-danger text-center">
-                    Please Register to Reply ...
-                </p>
-            @endif
-        </div>
+                {!! Form::close() !!}
+             </div>
+        @endcan
     </div>
 </div>
