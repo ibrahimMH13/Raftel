@@ -41,6 +41,7 @@
                      @endcan
                 </div>
 
+                <replies :data=""></replies>
                 @forelse($replies as $reply)
 
                     @include('thread.reply')

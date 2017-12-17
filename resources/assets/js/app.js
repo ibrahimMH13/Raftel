@@ -17,6 +17,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('reply', require('./components/reply.vue'));
+//Vue.component('favorite', require('./components/favorite.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -20,12 +20,15 @@
                     </div>
                     <div v-else class="flax" v-text="body"></div>
                     <favorite :reply="{{$reply}}"></favorite>
+                   {{--
+
                     {!! Form::open(["url"=>"/threads/{channel}/{thread}/{replies}"]) !!}
                     <button class="btn btn-default">
                         {{ $reply->favorite->count()?$reply->favorite->count():'' }}
                         <i class="glyphicon glyphicon-heart" style="color:#d62728"></i>
                     </button>
                     {!! Form::close() !!}
+                   ---}}
 
                 </div>
 

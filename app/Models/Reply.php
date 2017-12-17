@@ -11,9 +11,9 @@ class Reply extends Model
 {
     //
  protected $guarded=[];
-    use favoritetable;
-    use RecordActivites;
-
+    use favoritetable, RecordActivites;
+        protected $with=['user','favorite'];
+        protected $appends=['FavoriteCount','isFavorite'];
 
 
 

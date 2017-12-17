@@ -37,4 +37,17 @@ trait favoritetable
         return $this->favorite()->where('user_id',auth()->user()->id)->exists();
     }
 
+    public function getisFavoriteAttribute(){
+        return $this->isFavorite();
+    }
+
+    public function getFavoriteCountAttribute()
+    {
+        return $this->favorite->count();
+    }
+    public function unFavorited(){
+
+        $attr=["user_id"=>auth()->user()->id];
+        $this->favorite()->where($attr)->delete();
+    }
 }
