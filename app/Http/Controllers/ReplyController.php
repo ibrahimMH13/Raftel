@@ -100,7 +100,7 @@ class ReplyController extends Controller
     {
         $this->authorize('update',$reply);
          $reply->delete();
-        return back();
+
 
     }
 }

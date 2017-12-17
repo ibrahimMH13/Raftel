@@ -10,6 +10,7 @@ class Thread extends Model
 {
 
      protected $guarded=[];
+     protected $with=['reply'];
       use RecordActivites;
 
     protected static function boot()

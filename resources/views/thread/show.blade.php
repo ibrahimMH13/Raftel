@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <thread inline-template>
+        <div class="container">
 
         <div class="row">
             <div class="col-md-3">
@@ -40,17 +41,20 @@
                         </div>
                      @endcan
                 </div>
+                <div>
+                    <replies :data="{{$thread->reply}}"></replies>
+                </div>
 
-                <replies :data=""></replies>
-                @forelse($replies as $reply)
+                {{---
+                 @forelse($replies as $reply)
+                @include('thread.reply')
+                 @empty
+                <p class="text-center text-capitalize">Not Reply Yet,be the first !!</p>
+                  @endforelse
+               {{$replies->links()}}
 
-                    @include('thread.reply')
-
-                @empty
-                    <p class="text-center text-capitalize">Not Reply Yet,be the first !!</p>
-                @endforelse
-                {{$replies->links()}}
-            </div>
+                ---}}
+             </div>
             @if(auth()->check())
                 <div class="col-md-6 col-md-offset-4">
                     {!! Form::open(["url"=>$thread->path()."/replies","method"=>"post"]) !!}
@@ -66,13 +70,5 @@
 
         </div>
         </div>
-
-
-
-
-
-
-
-    <br>
-    <br>
+    </thread>
  @endsection

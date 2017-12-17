@@ -10,7 +10,6 @@
 
         props:['reply'],
         data(){
-
             return{
                 count :this.reply.FavoriteCount==0?'':this.reply.FavoriteCount,
                 isFavorited :this.reply.isFavorite,
