@@ -25,6 +25,14 @@
         }
 
     </style>
+    <script>
+        window.App = {!! json_encode([
+        "csrfToken" => csrf_token(),
+        "user" =>auth()->user(),
+        "singIn" => Auth::check()
+            ]);
+         !!}
+    </script>
 </head>
 <body>
     <div id="app">

@@ -37,6 +37,7 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -51,3 +52,10 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+window.Vue = require('vue');
+Vue.prototype.authorize = function (handler) {
+
+    let user = window.App.user;
+   return user?handler(user):false;
+
+};

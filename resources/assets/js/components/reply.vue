@@ -20,12 +20,14 @@
                         <button class="btn btn-xs btn-link" @click="editing = false">Cancel</button>
                     </div>
                     <div v-else class="flax" v-text="body"></div>
-                    <favorite :reply="data"></favorite>
+                    <div v-if="singIn">
+                        <favorite :reply="data"></favorite>
+                    </div>
                 </div>
 
             </div>
 
-              <div class="panel-footer">
+              <div class="panel-footer" v-if="canUpdate">
                    <button class="btn btn-link" @click="destroy">
                       <i class="glyphicon glyphicon-remove" style="color:#dd1144;"></i>
                   </button>
@@ -51,6 +53,14 @@
 
             };
         },
+        computed:{
+            singIn(){
+                return window.App.singIn;
+            },
+            canUpdate(){
+                return this.authorize(user=>this.data.user_id == user.id);
+            }
+        },
         methods:{
             update(){
                 axios.patch('/replies/' +this.data.id,{
@@ -61,7 +71,9 @@
             destroy(){
                 axios.delete("/replies/"+this.data.id);
                  $(this.$el).fadeOut(500);
+                 this.$emit('deleted',this.data.id);
             }
+
         }
     }
 </script>

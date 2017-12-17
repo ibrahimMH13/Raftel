@@ -1,6 +1,12 @@
 <script>
     import Replies from '../Replies.vue';
     export default {
-        components :{ Replies }
+        props:['initcount'],
+        components :{ Replies },
+        data(){
+            return {
+                count:this.initcount,
+            }
+        }
     }
 </script>

@@ -10,7 +10,7 @@ class Thread extends Model
 {
 
      protected $guarded=[];
-     protected $with=['reply'];
+     protected $with=['reply','user'];
       use RecordActivites;
 
     protected static function boot()
@@ -43,7 +43,12 @@ class Thread extends Model
 
         return $this->belongsTo(User::class);
     }
+    /*
+    *  public function getReplyCountAttribute(){
 
+        return $this->ReplyCount();
+    }
+    * */
     public function reply (){
 
         return $this->hasMany(Reply::class);

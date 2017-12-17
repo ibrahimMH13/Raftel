@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <thread inline-template>
-        <div class="container">
+    <thread inline-template :initcount="{{$thread->reply_count}}">
+        <div class="container" >
 
         <div class="row">
             <div class="col-md-3">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                       Info About :
+                       Info About :.
                     </div>
                     <div class="panel-body">
                         <h6> <strong>published By:</strong> {{ $thread->user->name }}</h6>
-                        <h6> <strong>Comment : </strong>{{$thread->reply_count .' '.str_plural('reply',$thread->reply_count)}}</h6>
+                        <h6> <strong>Comment : </strong><i v-text="count"></i>  {{  str_plural('reply',$thread->reply_count)}}</h6>
                     </div>
 
                 </div>
@@ -42,7 +42,7 @@
                      @endcan
                 </div>
                 <div>
-                    <replies :data="{{$thread->reply}}"></replies>
+                    <replies :data="{{$thread->reply}}" @removed="count--"></replies>
                 </div>
 
                 {{---
