@@ -36,7 +36,7 @@ class Thread extends Model
      }
     public function addReply($reply){
 
-        $this->reply()->create($reply);
+       return $this->reply()->create($reply);
     }
     //RelationShip
     public function user(){

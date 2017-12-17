@@ -42,31 +42,9 @@
                      @endcan
                 </div>
                 <div>
-                    <replies :data="{{$thread->reply}}" @removed="count--"></replies>
+                    <replies :data="{{$thread->reply}}" @added="count++" @removed="count--"></replies>
                 </div>
-
-                {{---
-                 @forelse($replies as $reply)
-                @include('thread.reply')
-                 @empty
-                <p class="text-center text-capitalize">Not Reply Yet,be the first !!</p>
-                  @endforelse
-               {{$replies->links()}}
-
-                ---}}
-             </div>
-            @if(auth()->check())
-                <div class="col-md-6 col-md-offset-4">
-                    {!! Form::open(["url"=>$thread->path()."/replies","method"=>"post"]) !!}
-                    <textarea id="body" name="body" class="form-control" rows="5"></textarea>
-                    <input type="submit" value="Reply" class="btn btn-default">
-                    {!! Form::close() !!}
-                </div>
-            @else
-                <p class="alert alert-danger text-center">
-                    Please Register to Reply ...
-                </p>
-            @endif
+              </div>
 
         </div>
         </div>

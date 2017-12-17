@@ -49,7 +49,10 @@ class ReplyController extends Controller
             "user_id" =>auth()->user()->id
 
         ];
-        $thread->addReply($newReply);
+       $reply = $thread->addReply($newReply);
+        if(\request()->expectsJson()){
+            return $reply->load('user');
+        }
         return back();
 
     }
