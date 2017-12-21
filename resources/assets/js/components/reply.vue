@@ -4,7 +4,7 @@
             <div class="panel-heading">
                 <div class="level">
                     <h6 class="flax"><a :href="'/Profile/'+this.data.user.name"><i v-text="'  ' + this.data.user.name"></i> reply </a></h6>
-                    <span> {{ this.data.created_at }} </span>
+                    <span v-text="ago">  </span>
                 </div>
             </div>
 
@@ -41,7 +41,9 @@
 <script>
 
     import Favorite from './Favorite.vue';
-    export default {
+    import moment from  'moment';
+      export default {
+
         props:['data'],
         components:{ Favorite },
         data(){
@@ -59,6 +61,10 @@
             },
             canUpdate(){
                 return this.authorize(user=>this.data.user_id == user.id);
+            },
+            ago(){
+                return moment(this.data.created_at).utc('2017-12-19T07:00:00.427').zone(+2).fromNow()+ '..';
+
             }
         },
         methods:{

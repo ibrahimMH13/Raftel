@@ -1,6 +1,6 @@
 <template>
         <div>
-            <div v-for="(reply,index) in items">
+            <div v-for="(reply,index) in items" :key="reply.id">
                 <reply :data="reply" @deleted="removeOfList(index)"></reply>
             </div>
             <new-reply :endpoint="endpoint" @created="addIn"></new-reply>
@@ -15,14 +15,29 @@
 
     export default {
     components :{ Reply , NewReply },
-        props:['data'],
+
         data(){
                 return {
-                    items:this.data,
+                    dataSet:false,
+                    items:[],
                     endpoint:location.pathname+'/replies',
                 }
         },
+        created(){
+
+            this.fetch();
+        },
         methods:{
+            fetch(){
+                axios.get(this.url()).then(this.refresh);
+            },
+            url(){
+                return location.pathname+"/replies";
+            },
+            refresh({data}){
+                this.dataSet = data;
+               this.items = data.data;
+            },
             addIn(reply){
                 this.items.push(reply);
                 this.$emit('added');

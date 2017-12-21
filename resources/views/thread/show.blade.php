@@ -42,7 +42,7 @@
                      @endcan
                 </div>
                 <div>
-                    <replies :data="{{$thread->reply}}" @added="count++" @removed="count--"></replies>
+                    <replies @added="count++" @removed="count--"></replies>
                 </div>
               </div>
 

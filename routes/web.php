@@ -28,6 +28,8 @@ Route::get('/threads/{channel}/{thread}','ThreadController@show');
 Route::delete('/threads/{channel}/{thread}','ThreadController@destroy');
 
 //Reply
+//for get replies only to vue pagination
+Route::get('/threads/{channel}/{thread}/{replies}','ReplyController@index');
 Route::delete('/replies/{reply}','ReplyController@destroy');
 Route::patch('/replies/{reply}','ReplyController@update');
 Route::post('/threads/{channel}/{thread}/{replies}','ReplyController@store');
